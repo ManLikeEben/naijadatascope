@@ -1,0 +1,1263 @@
+{
+  "indicator_code": "SL.UEM.TOTL.ZS",
+  "indicator_name": "Unemployment (% of labour force, ILO modelled estimate)",
+  "retrieved_at_utc": "2026-10-26T14:27:39.126756+00:00",
+  "response_metadata": {
+    "page": 1,
+    "pages": 1,
+    "per_page": 20000,
+    "total": 78,
+    "sourceid": "2",
+    "lastupdated": "2026-10-08"
+  },
+  "records": [
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "GH",
+        "value": "Ghana"
+      },
+      "countryiso3code": "GHA",
+      "date": "2025",
+      "value": 2.979,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "GH",
+        "value": "Ghana"
+      },
+      "countryiso3code": "GHA",
+      "date": "2024",
+      "value": 2.82,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "GH",
+        "value": "Ghana"
+      },
+      "countryiso3code": "GHA",
+      "date": "2023",
+      "value": 2.829,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "GH",
+        "value": "Ghana"
+      },
+      "countryiso3code": "GHA",
+      "date": "2022",
+      "value": 2.87,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "GH",
+        "value": "Ghana"
+      },
+      "countryiso3code": "GHA",
+      "date": "2021",
+      "value": 3.2,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "GH",
+        "value": "Ghana"
+      },
+      "countryiso3code": "GHA",
+      "date": "2020",
+      "value": 3.178,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "GH",
+        "value": "Ghana"
+      },
+      "countryiso3code": "GHA",
+      "date": "2019",
+      "value": 3.067,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "GH",
+        "value": "Ghana"
+      },
+      "countryiso3code": "GHA",
+      "date": "2018",
+      "value": 3.204,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "GH",
+        "value": "Ghana"
+      },
+      "countryiso3code": "GHA",
+      "date": "2017",
+      "value": 3.369,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "GH",
+        "value": "Ghana"
+      },
+      "countryiso3code": "GHA",
+      "date": "2016",
+      "value": 5.256,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "GH",
+        "value": "Ghana"
+      },
+      "countryiso3code": "GHA",
+      "date": "2015",
+      "value": 6.806,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "GH",
+        "value": "Ghana"
+      },
+      "countryiso3code": "GHA",
+      "date": "2014",
+      "value": 4.403,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "GH",
+        "value": "Ghana"
+      },
+      "countryiso3code": "GHA",
+      "date": "2013",
+      "value": 2.173,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "GH",
+        "value": "Ghana"
+      },
+      "countryiso3code": "GHA",
+      "date": "2012",
+      "value": 3.126,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "GH",
+        "value": "Ghana"
+      },
+      "countryiso3code": "GHA",
+      "date": "2011",
+      "value": 4.213,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "GH",
+        "value": "Ghana"
+      },
+      "countryiso3code": "GHA",
+      "date": "2010",
+      "value": 5.384,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "GH",
+        "value": "Ghana"
+      },
+      "countryiso3code": "GHA",
+      "date": "2009",
+      "value": 5.362,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "GH",
+        "value": "Ghana"
+      },
+      "countryiso3code": "GHA",
+      "date": "2008",
+      "value": 5.144,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "GH",
+        "value": "Ghana"
+      },
+      "countryiso3code": "GHA",
+      "date": "2007",
+      "value": 5.104,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "GH",
+        "value": "Ghana"
+      },
+      "countryiso3code": "GHA",
+      "date": "2006",
+      "value": 4.897,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "GH",
+        "value": "Ghana"
+      },
+      "countryiso3code": "GHA",
+      "date": "2005",
+      "value": 5.816,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "GH",
+        "value": "Ghana"
+      },
+      "countryiso3code": "GHA",
+      "date": "2004",
+      "value": 6.758,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "GH",
+        "value": "Ghana"
+      },
+      "countryiso3code": "GHA",
+      "date": "2003",
+      "value": 7.728,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "GH",
+        "value": "Ghana"
+      },
+      "countryiso3code": "GHA",
+      "date": "2002",
+      "value": 8.711,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "GH",
+        "value": "Ghana"
+      },
+      "countryiso3code": "GHA",
+      "date": "2001",
+      "value": 9.615,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "GH",
+        "value": "Ghana"
+      },
+      "countryiso3code": "GHA",
+      "date": "2000",
+      "value": 10.456,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "NG",
+        "value": "Nigeria"
+      },
+      "countryiso3code": "NGA",
+      "date": "2025",
+      "value": 3.064,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "NG",
+        "value": "Nigeria"
+      },
+      "countryiso3code": "NGA",
+      "date": "2024",
+      "value": 3.045,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "NG",
+        "value": "Nigeria"
+      },
+      "countryiso3code": "NGA",
+      "date": "2023",
+      "value": 3.074,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "NG",
+        "value": "Nigeria"
+      },
+      "countryiso3code": "NGA",
+      "date": "2022",
+      "value": 3.827,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "NG",
+        "value": "Nigeria"
+      },
+      "countryiso3code": "NGA",
+      "date": "2021",
+      "value": 5.404,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "NG",
+        "value": "Nigeria"
+      },
+      "countryiso3code": "NGA",
+      "date": "2020",
+      "value": 5.714,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "NG",
+        "value": "Nigeria"
+      },
+      "countryiso3code": "NGA",
+      "date": "2019",
+      "value": 5.206,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "NG",
+        "value": "Nigeria"
+      },
+      "countryiso3code": "NGA",
+      "date": "2018",
+      "value": 5.069,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "NG",
+        "value": "Nigeria"
+      },
+      "countryiso3code": "NGA",
+      "date": "2017",
+      "value": 4.83,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "NG",
+        "value": "Nigeria"
+      },
+      "countryiso3code": "NGA",
+      "date": "2016",
+      "value": 4.499,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "NG",
+        "value": "Nigeria"
+      },
+      "countryiso3code": "NGA",
+      "date": "2015",
+      "value": 4.134,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "NG",
+        "value": "Nigeria"
+      },
+      "countryiso3code": "NGA",
+      "date": "2014",
+      "value": 3.9,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "NG",
+        "value": "Nigeria"
+      },
+      "countryiso3code": "NGA",
+      "date": "2013",
+      "value": 3.711,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "NG",
+        "value": "Nigeria"
+      },
+      "countryiso3code": "NGA",
+      "date": "2012",
+      "value": 3.761,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "NG",
+        "value": "Nigeria"
+      },
+      "countryiso3code": "NGA",
+      "date": "2011",
+      "value": 3.77,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "NG",
+        "value": "Nigeria"
+      },
+      "countryiso3code": "NGA",
+      "date": "2010",
+      "value": 3.744,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "NG",
+        "value": "Nigeria"
+      },
+      "countryiso3code": "NGA",
+      "date": "2009",
+      "value": 3.763,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "NG",
+        "value": "Nigeria"
+      },
+      "countryiso3code": "NGA",
+      "date": "2008",
+      "value": 3.792,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "NG",
+        "value": "Nigeria"
+      },
+      "countryiso3code": "NGA",
+      "date": "2007",
+      "value": 3.794,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "NG",
+        "value": "Nigeria"
+      },
+      "countryiso3code": "NGA",
+      "date": "2006",
+      "value": 3.749,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "NG",
+        "value": "Nigeria"
+      },
+      "countryiso3code": "NGA",
+      "date": "2005",
+      "value": 3.727,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "NG",
+        "value": "Nigeria"
+      },
+      "countryiso3code": "NGA",
+      "date": "2004",
+      "value": 3.59,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "NG",
+        "value": "Nigeria"
+      },
+      "countryiso3code": "NGA",
+      "date": "2003",
+      "value": 3.637,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "NG",
+        "value": "Nigeria"
+      },
+      "countryiso3code": "NGA",
+      "date": "2002",
+      "value": 3.669,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "NG",
+        "value": "Nigeria"
+      },
+      "countryiso3code": "NGA",
+      "date": "2001",
+      "value": 3.9,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "NG",
+        "value": "Nigeria"
+      },
+      "countryiso3code": "NGA",
+      "date": "2000",
+      "value": 3.953,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "ZA",
+        "value": "South Africa"
+      },
+      "countryiso3code": "ZAF",
+      "date": "2025",
+      "value": 32.391,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "ZA",
+        "value": "South Africa"
+      },
+      "countryiso3code": "ZAF",
+      "date": "2024",
+      "value": 32.279,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "ZA",
+        "value": "South Africa"
+      },
+      "countryiso3code": "ZAF",
+      "date": "2023",
+      "value": 32.098,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "ZA",
+        "value": "South Africa"
+      },
+      "countryiso3code": "ZAF",
+      "date": "2022",
+      "value": 33.268,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "ZA",
+        "value": "South Africa"
+      },
+      "countryiso3code": "ZAF",
+      "date": "2021",
+      "value": 34.007,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "ZA",
+        "value": "South Africa"
+      },
+      "countryiso3code": "ZAF",
+      "date": "2020",
+      "value": 29.217,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "ZA",
+        "value": "South Africa"
+      },
+      "countryiso3code": "ZAF",
+      "date": "2019",
+      "value": 28.468,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "ZA",
+        "value": "South Africa"
+      },
+      "countryiso3code": "ZAF",
+      "date": "2018",
+      "value": 26.906,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "ZA",
+        "value": "South Africa"
+      },
+      "countryiso3code": "ZAF",
+      "date": "2017",
+      "value": 27.035,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "ZA",
+        "value": "South Africa"
+      },
+      "countryiso3code": "ZAF",
+      "date": "2016",
+      "value": 26.536,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "ZA",
+        "value": "South Africa"
+      },
+      "countryiso3code": "ZAF",
+      "date": "2015",
+      "value": 25.149,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "ZA",
+        "value": "South Africa"
+      },
+      "countryiso3code": "ZAF",
+      "date": "2014",
+      "value": 24.89,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "ZA",
+        "value": "South Africa"
+      },
+      "countryiso3code": "ZAF",
+      "date": "2013",
+      "value": 24.561,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "ZA",
+        "value": "South Africa"
+      },
+      "countryiso3code": "ZAF",
+      "date": "2012",
+      "value": 24.727,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "ZA",
+        "value": "South Africa"
+      },
+      "countryiso3code": "ZAF",
+      "date": "2011",
+      "value": 24.639,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "ZA",
+        "value": "South Africa"
+      },
+      "countryiso3code": "ZAF",
+      "date": "2010",
+      "value": 24.683,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "ZA",
+        "value": "South Africa"
+      },
+      "countryiso3code": "ZAF",
+      "date": "2009",
+      "value": 23.523,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "ZA",
+        "value": "South Africa"
+      },
+      "countryiso3code": "ZAF",
+      "date": "2008",
+      "value": 22.407,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "ZA",
+        "value": "South Africa"
+      },
+      "countryiso3code": "ZAF",
+      "date": "2007",
+      "value": 22.26,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "ZA",
+        "value": "South Africa"
+      },
+      "countryiso3code": "ZAF",
+      "date": "2006",
+      "value": 22.304,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "ZA",
+        "value": "South Africa"
+      },
+      "countryiso3code": "ZAF",
+      "date": "2005",
+      "value": 22.472,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "ZA",
+        "value": "South Africa"
+      },
+      "countryiso3code": "ZAF",
+      "date": "2004",
+      "value": 22.567,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "ZA",
+        "value": "South Africa"
+      },
+      "countryiso3code": "ZAF",
+      "date": "2003",
+      "value": 22.679,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "ZA",
+        "value": "South Africa"
+      },
+      "countryiso3code": "ZAF",
+      "date": "2002",
+      "value": 22.579,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "ZA",
+        "value": "South Africa"
+      },
+      "countryiso3code": "ZAF",
+      "date": "2001",
+      "value": 22.652,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    },
+    {
+      "indicator": {
+        "id": "SL.UEM.TOTL.ZS",
+        "value": "Unemployment, total (% of total labor force) (modeled ILO estimate)"
+      },
+      "country": {
+        "id": "ZA",
+        "value": "South Africa"
+      },
+      "countryiso3code": "ZAF",
+      "date": "2000",
+      "value": 22.788,
+      "unit": "",
+      "obs_status": "",
+      "decimal": 1
+    }
+  ]
+}
