@@ -519,7 +519,7 @@ with quality_tab:
 # ---------------------------------------------------------
 
 with ai_tab:
-    st.subheader("EBEN — Economic Intelligence Assistant")
+    st.subheader("EBEN — Enhanced Being for Exploration and Navigation")
     st.write(
         "Ask questions about the indicators in this dashboard. "
         "EBEN receives a compact summary of the selected dataset and "
@@ -575,7 +575,7 @@ with ai_tab:
                 )
 
                 prompt = f"""
-You are EBEN, the economic intelligence assistant for NaijaDataScope.
+You are EBEN (Enhanced Being for Exploration and Navigation), the economic intelligence assistant for NaijaDataScope.
 
 Rules:
 1. Base factual claims only on the supplied data context.
@@ -608,7 +608,7 @@ important caveats, and the years covered by the evidence.
                 with st.spinner("EBEN is analysing the available data..."):
                     from google.genai import types
                     response = client.models.generate_content(
-                        model="gemini-3.8-flash",
+                        model="gemini-3.5-flash-lite",
                         contents=prompt,
                         config=types.GenerateContentConfig(
                             thinking_config=types.ThinkingConfig(thinking_level="low"),
