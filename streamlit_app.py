@@ -599,8 +599,15 @@ DATA CONTEXT:
 USER QUESTION:
 {question.strip()}
 
-Provide a concise answer, supporting figures from the supplied context,
-important caveats, and the years covered by the evidence.
+Answer in no more than 250 words, using this structure:
+- Direct answer to the user's question.
+- 4–6 concise bullet points with relevant figures, countries, and years.
+- Clearly distinguish observed data from possible explanations.
+- End with a brief takeaway and one relevant caveat.
+
+Use only figures present in the supplied context. If the context cannot
+answer the question, explain what is missing. Do not repeat your full
+greeting in every response.
 """
 
                 client = genai.Client(api_key=api_key)
@@ -612,25 +619,49 @@ important caveats, and the years covered by the evidence.
                         contents=prompt,
                         config=types.GenerateContentConfig(
                             thinking_config=types.ThinkingConfig(thinking_level="low"),
-                            max_output_tokens=1024,
+                            max_output_tokens=2048,
                             temperature=0.2,
                         ),
                     )
 
                 answer = getattr(response, "text", None)
 
+                # Check whether Gemini stopped because it reached its token limit.
+                candidates = getattr(response, "candidates", None) or []
+                finish_reason = (
+                    getattr(candidates[0], "finish_reason", None)
+                    if candidates
+                    else None
+                )
+                finish_reason_text = str(finish_reason).upper()
+                response_was_truncated = "MAX_TOKENS" in finish_reason_text
+
                 if answer:
                     st.markdown("### EBEN's response")
                     st.markdown(answer)
+
+                    if response_was_truncated:
+                        st.warning(
+                            "EBEN's response may be incomplete because it "
+                            "reached the generation limit. Ask for a shorter "
+                            "answer or narrow your question."
+                        )
+
                     st.caption(
                         "Evidence: the selected NaijaDataScope warehouse data. "
                         "Source observations are provided by the World Bank. "
                         "AI-generated interpretations may contain errors."
                     )
                 else:
-                    st.warning(
-                        "The AI service returned no text. Please try again."
-                    )
+                    if response_was_truncated:
+                        st.warning(
+                            "EBEN reached its generation limit without "
+                            "returning a usable answer. Try a shorter question."
+                        )
+                    else:
+                        st.warning(
+                            "The AI service returned no text. Please try again."
+                        )
 
             except Exception as exc:
                 st.error(
