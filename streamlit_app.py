@@ -606,9 +606,15 @@ important caveats, and the years covered by the evidence.
                 client = genai.Client(api_key=api_key)
 
                 with st.spinner("EBEN is analysing the available data..."):
+                    from google.genai import types
                     response = client.models.generate_content(
                         model="gemini-3.8-flash",
                         contents=prompt,
+                        config=types.GenerateContentConfig(
+                            thinking_config=types.ThinkingConfig(thinking_level="low"),
+                            max_output_tokens=1024,
+                            temperature=0.2,
+                        ),
                     )
 
                 answer = getattr(response, "text", None)
