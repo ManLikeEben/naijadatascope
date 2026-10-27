@@ -607,7 +607,7 @@ important caveats, and the years covered by the evidence.
 
                 with st.spinner("EBEN is analysing the available data..."):
                     response = client.models.generate_content(
-                        model="gemini-2.5-flash",
+                        model="gemini-3.8-flash",
                         contents=prompt,
                     )
 
