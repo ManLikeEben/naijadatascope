@@ -1,5 +1,6 @@
 ﻿from pathlib import Path
 import os
+import re
 
 import duckdb
 import pandas as pd
@@ -559,20 +560,39 @@ with ai_tab:
                     & data["year"].between(year_range[0], year_range[1])
                 ].copy()
 
-                # Keep the context compact and based on actual warehouse rows.
-                context = (
-                    ai_data[
-                        [
-                            "country_name",
-                            "indicator_name",
-                            "year",
-                            "value",
-                            "unit",
-                        ]
+                # Build a readable AI context while preserving raw warehouse values.
+                ai_context = ai_data[
+                    [
+                        "country_name",
+                        "indicator_code",
+                        "indicator_name",
+                        "year",
+                        "value",
+                        "unit",
                     ]
-                    .sort_values(["indicator_name", "country_name", "year"])
-                    .to_string(index=False, max_rows=300)
+                ].sort_values(
+                    ["indicator_code", "country_name", "year"]
+                ).copy()
+
+                ai_context["formatted_value"] = ai_context.apply(
+                    lambda row: format_value(
+                        row["value"], row["indicator_code"]
+                    ),
+                    axis=1,
                 )
+
+                context = ai_context[
+                    [
+                        "country_name",
+                        "indicator_code",
+                        "indicator_name",
+                        "year",
+                        "formatted_value",
+                        "unit",
+                    ]
+                ].rename(
+                    columns={"formatted_value": "value"}
+                ).to_string(index=False)
 
                 prompt = f"""
 You are EBEN (Enhanced Being for Exploration and Navigation), the economic intelligence assistant for NaijaDataScope.
@@ -584,12 +604,23 @@ Rules:
 4. Distinguish observed patterns from possible explanations.
 5. Use clear language suitable for students, citizens, journalists, and analysts.
 6. Mention the relevant indicator, country, and year when quoting figures.
-7. GDP is in current US dollars where indicated; percentage indicators are rates.
-8. Do not imply that correlation proves causation.
-9. The supplied rows may be filtered and may not represent all available data.
+7. Interpret each indicator according to its indicator code and unit.
+8. NY.GDP.MKTP.CD is GDP in current US dollars (nominal GDP), not real GDP growth.
+9. NY.GDP.MKTP.KD.ZG is annual real GDP growth in percent.
+10. FP.CPI.TOTL.ZG is annual consumer-price inflation in percent.
+11. SP.POP.TOTL is population; SL.UEM.TOTL.ZS is the unemployment rate in percent.
+12. Format percentages to two decimal places and large values using readable units. Preserve currency symbols, units, signs, and the meaning of values. For GDP in current US dollars, display monetary values consistently as $574.18B or US$574.18 billion. Never omit the currency symbol or use unmatched quotation marks or backticks around values.
+13. Do not imply that correlation proves causation.
+14. The supplied rows may be filtered and may not represent all available data.
+15. Do not compare values from different indicators as if they share the same unit.
+16. If a requested indicator is absent from the supplied context, say so clearly.
 
 DATA SOURCE: World Bank Indicators API
-SELECTED INDICATOR: {selected_name}
+DASHBOARD SELECTED INDICATOR: {selected_name}
+Treat the selected indicator as the dashboard's initial focus, not as a
+restriction on the question. If the user asks about another indicator,
+use that indicator's observations from DATA CONTEXT. If the requested
+indicator is not present, say so clearly.
 SELECTED COUNTRIES: {", ".join(selected_countries)}
 SELECTED YEARS: {year_range[0]}–{year_range[1]}
 
@@ -625,6 +656,20 @@ greeting in every response.
                     )
 
                 answer = getattr(response, "text", None)
+
+                # Repair malformed USD amounts in nominal GDP responses.
+                # Preserve valid Markdown such as `NY.GDP.MKTP.CD`.
+                if answer and (
+                    "NY.GDP.MKTP.CD" in answer
+                    or "nominal GDP" in answer.lower()
+                    or "current US dollars" in answer.lower()
+                ):
+                    answer = re.sub(
+                        r"`(?P<amount>\d[\d,]*(?:\.\d+)?\s*(?:[KMBT]\b|billion\b|million\b|trillion\b))(?!`)",
+                        lambda match: "$" + match.group("amount"),
+                        answer,
+                        flags=re.IGNORECASE,
+                    )
 
                 # Check whether Gemini stopped because it reached its token limit.
                 candidates = getattr(response, "candidates", None) or []
