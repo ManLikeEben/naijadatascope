@@ -702,6 +702,153 @@ greeting in every response.
                     )
 
                 answer = getattr(response, "text", None)
+                # Deterministic answers for data-completeness questions.
+                # Calculate coverage from the loaded warehouse data, not Gemini.
+                completeness_question = bool(
+                    re.search(
+                        r"\b(missing years?|missing (?:annual )?observations?|"
+                        r"data completeness|complete data|"
+                        r"data coverage|gaps in (?:the )?data|"
+                        r"fully populated|complete series)\b",
+                        question,
+                        flags=re.IGNORECASE,
+                    )
+                )
+
+                if completeness_question:
+                    question_lower = question.lower()
+
+                    # Identify the requested country.
+                    country_aliases = {
+                        "nigeria": "Nigeria",
+                        "ghana": "Ghana",
+                        "south africa": "South Africa",
+                    }
+
+                    requested_country = next(
+                        (
+                            name
+                            for alias, name in country_aliases.items()
+                            if alias in question_lower
+                        ),
+                        None,
+                    )
+
+                    # Identify the requested indicator.
+                    indicator_aliases = {
+                        "FP.CPI.TOTL.ZG": [
+                            "inflation",
+                            "consumer-price",
+                            "consumer price",
+                        ],
+                        "NY.GDP.MKTP.CD": [
+                            "nominal gdp",
+                            "current us dollars",
+                            "gdp in current",
+                        ],
+                        "NY.GDP.MKTP.KD.ZG": [
+                            "gdp growth",
+                            "real gdp growth",
+                        ],
+                        "SP.POP.TOTL": ["population"],
+                        "SL.UEM.TOTL.ZS": ["unemployment"],
+                    }
+
+                    requested_code = next(
+                        (
+                            code
+                            for code, aliases in indicator_aliases.items()
+                            if code.lower() in question_lower
+                            or any(
+                                alias in question_lower
+                                for alias in aliases
+                            )
+                        ),
+                        None,
+                    )
+
+                    # Extract an explicitly requested year range.
+                    year_match = re.search(
+                        r"\b(?:between|from)\s+(19\d{2}|20\d{2})"
+                        r"\s+(?:and|to)\s+(19\d{2}|20\d{2})\b",
+                        question,
+                        flags=re.IGNORECASE,
+                    )
+
+                    if year_match:
+                        start_year = int(year_match.group(1))
+                        end_year = int(year_match.group(2))
+                    else:
+                        start_year, end_year = year_range
+
+                    # Answer deterministically when the question is specific.
+                    if (
+                        requested_country
+                        and requested_code
+                        and start_year <= end_year
+                    ):
+                        series = data[
+                            (data["country_name"] == requested_country)
+                            & (data["indicator_code"] == requested_code)
+                            & data["year"].between(start_year, end_year)
+                        ].copy()
+
+                        expected_years = set(
+                            range(start_year, end_year + 1)
+                        )
+
+                        observed_years = set(
+                            series.loc[
+                                series["value"].notna(), "year"
+                            ].astype(int)
+                        )
+
+                        missing_years = sorted(
+                            expected_years - observed_years
+                        )
+
+                        available_count = len(
+                            expected_years & observed_years
+                        )
+                        expected_count = len(expected_years)
+
+                        indicator_name = (
+                            series["indicator_name"].iloc[0]
+                            if not series.empty
+                            else requested_code
+                        )
+
+                        missing_text = (
+                            ", ".join(map(str, missing_years))
+                            if missing_years
+                            else "None"
+                        )
+
+                        answer = (
+                            f"Based on the loaded warehouse data, "
+                            f"{requested_country}'s {indicator_name} series "
+                            f"from {start_year} to {end_year} has "
+                            f"{available_count} available annual observations "
+                            f"out of {expected_count} expected. "
+                            f"Missing years: {missing_text}.\n\n"
+                            f"- **Country:** {requested_country}\n"
+                            f"- **Indicator:** `{requested_code}` "
+                            f"({indicator_name})\n"
+                            f"- **Period:** {start_year}–{end_year}\n"
+                            f"- **Expected observations:** {expected_count}\n"
+                            f"- **Available observations:** {available_count}\n"
+                            f"- **Missing years:** {missing_text}\n\n"
+                            f"**Takeaway:** "
+                            + (
+                                "The series has no missing annual observations "
+                                "in the requested period."
+                                if not missing_years
+                                else "The series has gaps in the requested period."
+                            )
+                            + " **Caveat:** This checks year coverage and "
+                            "non-null values in the loaded warehouse; it does "
+                            "not verify the source's accuracy or revisions."
+                        )
 
                 # Repair malformed USD formatting in nominal GDP responses.
                 # Preserve Markdown formatting for indicator codes.
