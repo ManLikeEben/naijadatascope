@@ -560,7 +560,7 @@ with ai_tab:
                     & data["year"].between(year_range[0], year_range[1])
                 ].copy()
 
-                # Build a readable AI context while preserving raw warehouse values.
+                # Build a readable AI context while preserving warehouse values.
                 ai_context = ai_data[
                     [
                         "country_name",
@@ -594,6 +594,48 @@ with ai_tab:
                     columns={"formatted_value": "value"}
                 ).to_string(index=False)
 
+                # Calculate coverage using the selected year range.
+                # A year is missing if it has no row with a non-null value.
+                expected_years = set(
+                    range(year_range[0], year_range[1] + 1)
+                )
+                coverage_lines = []
+
+                for country in selected_countries:
+                    for code in all_indicator_codes:
+                        indicator_rows = ai_data[
+                            (ai_data["country_name"] == country)
+                            & (ai_data["indicator_code"] == code)
+                        ]
+
+                        indicator_name = (
+                            indicator_rows["indicator_name"].iloc[0]
+                            if not indicator_rows.empty
+                            else code
+                        )
+
+                        valid_rows = indicator_rows[
+                            indicator_rows["value"].notna()
+                        ]
+
+                        observed_years = set(
+                            valid_rows["year"].astype(int).tolist()
+                        )
+
+                        missing_years = sorted(
+                            expected_years - observed_years
+                        )
+
+                        coverage_lines.append(
+                            f"{country} | {indicator_name} ({code}) | "
+                            f"Expected years: {len(expected_years)} | "
+                            f"Available years: {len(expected_years) - len(missing_years)} | "
+                            f"Missing years: "
+                            f"{', '.join(map(str, missing_years)) if missing_years else 'None'}"
+                        )
+
+                coverage_context = "\n".join(coverage_lines)
+
                 prompt = f"""
 You are EBEN (Enhanced Being for Exploration and Navigation), the economic intelligence assistant for NaijaDataScope.
 
@@ -609,11 +651,12 @@ Rules:
 9. NY.GDP.MKTP.KD.ZG is annual real GDP growth in percent.
 10. FP.CPI.TOTL.ZG is annual consumer-price inflation in percent.
 11. SP.POP.TOTL is population; SL.UEM.TOTL.ZS is the unemployment rate in percent.
-12. Format percentages to two decimal places and large values using readable units. Preserve currency symbols, units, signs, and the meaning of values. For GDP in current US dollars, display monetary values consistently as $574.18B or US$574.18 billion. Never omit the currency symbol or use unmatched quotation marks or backticks around values.
+12. Format percentages to two decimal places and large values using readable units. Preserve currency symbols, units, signs, and the meaning of values. For GDP in current US dollars, display monetary values consistently as $574.18B or US$574.18 billion. Always include the currency symbol for monetary values. Write GDP values as plain text, for example US$574.18 billion in 2014. Never put backticks around currency amounts. Keep a space between every number, unit, and word. Do not join words together. Backticks may be used for indicator codes only.
 13. Do not imply that correlation proves causation.
 14. The supplied rows may be filtered and may not represent all available data.
 15. Do not compare values from different indicators as if they share the same unit.
 16. If a requested indicator is absent from the supplied context, say so clearly.
+17. For questions about missing years or data completeness, use DATA COVERAGE CHECK. Do not claim a series is complete unless the coverage check confirms it. A year with no non-null observation is missing. Report the missing years explicitly when relevant.
 
 DATA SOURCE: World Bank Indicators API
 DASHBOARD SELECTED INDICATOR: {selected_name}
@@ -623,6 +666,9 @@ use that indicator's observations from DATA CONTEXT. If the requested
 indicator is not present, say so clearly.
 SELECTED COUNTRIES: {", ".join(selected_countries)}
 SELECTED YEARS: {year_range[0]}–{year_range[1]}
+
+DATA COVERAGE CHECK:
+{coverage_context}
 
 DATA CONTEXT:
 {context}
@@ -657,15 +703,62 @@ greeting in every response.
 
                 answer = getattr(response, "text", None)
 
-                # Repair malformed USD amounts in nominal GDP responses.
-                # Preserve valid Markdown such as `NY.GDP.MKTP.CD`.
+                # Repair malformed USD formatting in nominal GDP responses.
+                # Preserve Markdown formatting for indicator codes.
                 if answer and (
                     "NY.GDP.MKTP.CD" in answer
-                    or "nominal GDP" in answer.lower()
+                    or "nominal gdp" in answer.lower()
                     or "current US dollars" in answer.lower()
                 ):
+                    # Repair malformed currency symbols such as US`381.20.
                     answer = re.sub(
-                        r"`(?P<amount>\d[\d,]*(?:\.\d+)?\s*(?:[KMBT]\b|billion\b|million\b|trillion\b))(?!`)",
+                        r"US`+\s*(?=\d)",
+                        "US$",
+                        answer,
+                        flags=re.IGNORECASE,
+                    )
+
+                    # Insert missing spaces before monetary units.
+                    answer = re.sub(
+                        r"(?<=\d)(billion|million|trillion)",
+                        r" \1",
+                        answer,
+                        flags=re.IGNORECASE,
+                    )
+
+                    # Repair missing spaces between units, years, and clauses.
+                    answer = re.sub(
+                        r"(billion|million|trillion)\s*in\s*(\d{4})\s*and\s*(?=US\$)",
+                        r"\1 in \2 and ",
+                        answer,
+                        flags=re.IGNORECASE,
+                    )
+                    answer = re.sub(
+                        r"(billion|million|trillion)\s*in\s*(\d{4})\b",
+                        r"\1 in \2",
+                        answer,
+                        flags=re.IGNORECASE,
+                    )
+                    answer = re.sub(
+                        r"\b(in)\s*(\d{4})\s*and\s*(?=US\$)",
+                        r"\1 \2 and ",
+                        answer,
+                        flags=re.IGNORECASE,
+                    )
+
+                    # Remove backticks around currency amounts, not indicator codes.
+                    answer = re.sub(
+                        r"`(US\$|\$)(\s*\d[\d,]*(?:\.\d+)?"
+                        r"(?:\s*(?:[KMBT]\b|billion\b|million\b|trillion\b))?)`",
+                        r"\1\2",
+                        answer,
+                        flags=re.IGNORECASE,
+                    )
+
+                    # Repair a stray opening backtick before a monetary amount.
+                    answer = re.sub(
+                        r"`(?P<amount>\d[\d,]*(?:\.\d+)?"
+                        r"\s*(?:[KMBT]\b|billion\b|million\b|trillion\b))(?!`)",
                         lambda match: "$" + match.group("amount"),
                         answer,
                         flags=re.IGNORECASE,
