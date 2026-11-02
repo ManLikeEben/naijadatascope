@@ -850,14 +850,14 @@ greeting in every response.
                             "not verify the source's accuracy or revisions."
                         )
 
-                # Repair malformed USD formatting in nominal GDP responses.
-                # Preserve Markdown formatting for indicator codes.
+                # Normalise USD formatting in nominal GDP responses.
+                # Preserve backticks around indicator codes.
                 if answer and (
                     "NY.GDP.MKTP.CD" in answer
                     or "nominal gdp" in answer.lower()
-                    or "current US dollars" in answer.lower()
+                    or "current us dollars" in answer.lower()
                 ):
-                    # Repair malformed currency symbols such as US`381.20.
+                    # Restore malformed USD currency symbols.
                     answer = re.sub(
                         r"US`+\s*(?=\d)",
                         "US$",
@@ -865,7 +865,23 @@ greeting in every response.
                         flags=re.IGNORECASE,
                     )
 
-                    # Insert missing spaces before monetary units.
+                    # Separate monetary values from their units.
+                    answer = re.sub(
+                        r"(?<=\d)(billion|million|trillion)\b",
+                        r" \1",
+                        answer,
+                        flags=re.IGNORECASE,
+                    )
+
+                    # Restore spaces between monetary units and year connectors.
+                    answer = re.sub(
+                        r"\b(billion|million|trillion)(?=(in|to|and)\s*\d{4}\b)",
+                        r"\1 ",
+                        answer,
+                        flags=re.IGNORECASE,
+                    )
+
+                    # Restore spaces between connectors and years.
                     answer = re.sub(
                         r"(?<=\d)(billion|million|trillion)",
                         r" \1",
@@ -873,42 +889,11 @@ greeting in every response.
                         flags=re.IGNORECASE,
                     )
 
-                    # Repair missing spaces between units, years, and clauses.
+                    # Remove stray backticks immediately before monetary amounts.
                     answer = re.sub(
-                        r"(billion|million|trillion)\s*in\s*(\d{4})\s*and\s*(?=US\$)",
-                        r"\1 in \2 and ",
+                        r"(?<![A-Za-z0-9_])`(?=\d[\d,]*(?:\.\d+)?)",
+                        "",
                         answer,
-                        flags=re.IGNORECASE,
-                    )
-                    answer = re.sub(
-                        r"(billion|million|trillion)\s*in\s*(\d{4})\b",
-                        r"\1 in \2",
-                        answer,
-                        flags=re.IGNORECASE,
-                    )
-                    answer = re.sub(
-                        r"\b(in)\s*(\d{4})\s*and\s*(?=US\$)",
-                        r"\1 \2 and ",
-                        answer,
-                        flags=re.IGNORECASE,
-                    )
-
-                    # Remove backticks around currency amounts, not indicator codes.
-                    answer = re.sub(
-                        r"`(US\$|\$)(\s*\d[\d,]*(?:\.\d+)?"
-                        r"(?:\s*(?:[KMBT]\b|billion\b|million\b|trillion\b))?)`",
-                        r"\1\2",
-                        answer,
-                        flags=re.IGNORECASE,
-                    )
-
-                    # Repair a stray opening backtick before a monetary amount.
-                    answer = re.sub(
-                        r"`(?P<amount>\d[\d,]*(?:\.\d+)?"
-                        r"\s*(?:[KMBT]\b|billion\b|million\b|trillion\b))(?!`)",
-                        lambda match: "$" + match.group("amount"),
-                        answer,
-                        flags=re.IGNORECASE,
                     )
 
                 # Check whether Gemini stopped because it reached its token limit.
