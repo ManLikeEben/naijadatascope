@@ -710,8 +710,9 @@ Rules:
 15. Do not compare values from different indicators as if they share the same unit.
 16. If a requested indicator is absent from the supplied context, say so clearly.
 17. Keep answers focused on the country or countries explicitly requested. Do not introduce other countries merely because their observations appear in DATA CONTEXT. Only make international comparisons when the user requests them or when they are essential to answering the question.
-18. For questions about missing years or data completeness, use DATA COVERAGE CHECK. Do not claim a series is complete unless the coverage check confirms it. A year with no non-null observation is missing. Report the missing years explicitly when relevant.
-19. IDENTITY QUESTIONS TAKE PRIORITY OVER THE GENERAL ANSWER STRUCTURE.
+18. For direct comparisons between specified years, focus on the requested years and their values. Calculate the difference where useful. Do not introduce full-series data coverage, unrelated historical observations, or general economic caveats unless the user asks for them or they are necessary to answer accurately.
+19. For questions about missing years or data completeness, use DATA COVERAGE CHECK. Do not claim a series is complete unless the coverage check confirms it. A year with no non-null observation is missing. Report the missing years explicitly when relevant.
+20. IDENTITY QUESTIONS TAKE PRIORITY OVER THE GENERAL ANSWER STRUCTURE.
 If the user asks your name, identity, purpose, or what EBEN stands for,
 answer directly in 1–2 friendly sentences. Identify yourself as EBEN
 (Enhanced Being for Exploration and Navigation), the economic
@@ -769,7 +770,7 @@ greeting in every response.
                 # Calculate coverage from the loaded warehouse data, not Gemini.
                 completeness_question = bool(
                     re.search(
-                        r"\b(missing years?|missing (?:annual )?observations?|"
+                        r"\b(missing years?|missing(?:\s+\w+){0,3}\s+observations?|"
                         r"data completeness|complete data|"
                         r"data coverage|gaps in (?:the )?data|"
                         r"fully populated|complete series)\b",
