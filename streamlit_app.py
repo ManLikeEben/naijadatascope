@@ -704,13 +704,14 @@ Rules:
 9. NY.GDP.MKTP.KD.ZG is annual real GDP growth in percent.
 10. FP.CPI.TOTL.ZG is annual consumer-price inflation in percent.
 11. SP.POP.TOTL is population; SL.UEM.TOTL.ZS is the unemployment rate in percent.
-12. Format percentages to two decimal places and large values using readable units. Preserve currency symbols, units, signs, and the meaning of values. For GDP in current US dollars, display monetary values consistently as $574.18B or US$574.18 billion. Always include the currency symbol for monetary values. Write GDP values as plain text, for example US$574.18 billion in 2014. Never put backticks around currency amounts. Keep a space between every number, unit, and word. Do not join words together. Backticks may be used for indicator codes only.
+12. Format percentages to two decimal places and large values using readable units. Preserve currency symbols, units, signs, and the meaning of values. For GDP in current US dollars, display monetary values consistently as US$574.18 billion. Always include the currency symbol for monetary values. Never put backticks around currency amounts. Use backticks for indicator codes only. Do not insert spaces before punctuation. Keep percentage signs attached to their numbers, e.g. 3.32%, not 3.32 %.
 13. Do not imply that correlation proves causation.
 14. The supplied rows may be filtered and may not represent all available data.
 15. Do not compare values from different indicators as if they share the same unit.
 16. If a requested indicator is absent from the supplied context, say so clearly.
-17. For questions about missing years or data completeness, use DATA COVERAGE CHECK. Do not claim a series is complete unless the coverage check confirms it. A year with no non-null observation is missing. Report the missing years explicitly when relevant.
-18. IDENTITY QUESTIONS TAKE PRIORITY OVER THE GENERAL ANSWER STRUCTURE.
+17. Keep answers focused on the country or countries explicitly requested. Do not introduce other countries merely because their observations appear in DATA CONTEXT. Only make international comparisons when the user requests them or when they are essential to answering the question.
+18. For questions about missing years or data completeness, use DATA COVERAGE CHECK. Do not claim a series is complete unless the coverage check confirms it. A year with no non-null observation is missing. Report the missing years explicitly when relevant.
+19. IDENTITY QUESTIONS TAKE PRIORITY OVER THE GENERAL ANSWER STRUCTURE.
 If the user asks your name, identity, purpose, or what EBEN stands for,
 answer directly in 1–2 friendly sentences. Identify yourself as EBEN
 (Enhanced Being for Exploration and Navigation), the economic
@@ -887,29 +888,20 @@ greeting in every response.
                         )
 
                         answer = (
-                            f"Based on the loaded warehouse data, "
-                            f"{requested_country}'s {indicator_name} series "
-                            f"from {start_year} to {end_year} has "
-                            f"{available_count} available annual observations "
-                            f"out of {expected_count} expected. "
-                            f"Missing years: {missing_text}.\n\n"
-                            f"- **Country:** {requested_country}\n"
-                            f"- **Indicator:** `{requested_code}` "
-                            f"({indicator_name})\n"
-                            f"- **Period:** {start_year}–{end_year}\n"
+                            f"**{requested_country} — {indicator_name}** "
+                            f"(`{requested_code}`), {start_year}–{end_year}: "
+                            f"{available_count} of {expected_count} expected "
+                            f"annual observations are available.\n\n"
                             f"- **Expected observations:** {expected_count}\n"
                             f"- **Available observations:** {available_count}\n"
                             f"- **Missing years:** {missing_text}\n\n"
-                            f"**Takeaway:** "
                             + (
-                                "The series has no missing annual observations "
-                                "in the requested period."
+                                "The series is complete for the requested period."
                                 if not missing_years
-                                else "The series has gaps in the requested period."
+                                else "The series contains missing annual observations."
                             )
-                            + " **Caveat:** This checks year coverage and "
-                            "non-null values in the loaded warehouse; it does "
-                            "not verify the source's accuracy or revisions."
+                            + " This checks non-null warehouse observations, "
+                            "not the accuracy or revision status of the original source."
                         )
 
                 # Normalise formatting in nominal GDP responses.
