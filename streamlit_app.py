@@ -635,15 +635,68 @@ with ai_tab:
                         )
 
                 coverage_context = "\n".join(coverage_lines)
+                # Curated external evidence for supported economic explanations.
+                external_evidence = ""
+                external_sources = []
+
+                question_lower = question.lower()
+
+                nigeria_inflation_2024_question = (
+                    "nigeria" in question_lower
+                    and "inflation" in question_lower
+                    and "2024" in question_lower
+                    and bool(
+                        re.search(
+                            r"\b(why|cause|causes|caused|reason|reasons|"
+                            r"driver|drivers|explain|explanation)\b",
+                            question_lower,
+                        )
+                    )
+                )
+
+                if nigeria_inflation_2024_question:
+                    external_evidence = """
+CURATED EXTERNAL EVIDENCE — NIGERIA INFLATION, 2024
+
+The following evidence comes from published institutional reports.
+Use it only to explain Nigeria's inflation in 2024.
+
+1. IMF, Nigeria: 2025 Article IV Consultation.
+The IMF's assessment discusses the contribution of naira depreciation,
+food supply constraints, energy subsidy removal and high borrowing costs
+to Nigeria's inflationary pressures.
+
+2. World Bank, Nigeria Development Update, September 2024.
+The report discusses food-price pressures, insecurity, climate-related
+supply disruptions, flooding and increases in gasoline prices.
+
+These sources provide evidence about possible inflation drivers.
+Do not claim that any single factor independently caused the entire
+increase. Distinguish the warehouse's recorded inflation figures from
+the explanations in these external reports.
+"""
+
+                    external_sources = [
+                        (
+                            "IMF — Nigeria: 2025 Article IV Consultation",
+                            "https://www.elibrary.imf.org/view/journals/002/2025/157/article-A001-en.xml",
+                        ),
+                        (
+                            "World Bank — Nigeria Development Update, September 2024",
+                            "https://documents1.worldbank.org/curated/en/099120324172519660/pdf/BOSIB175cc9e3c0831b49d10c7a89f723ea.pdf",
+                        ),
+                    ]
 
                 prompt = f"""
 You are EBEN (Enhanced Being for Exploration and Navigation), the economic intelligence assistant for NaijaDataScope.
 
 Rules:
-1. Base factual claims only on the supplied data context.
-2. Do not invent statistics, reporting years, sources, or causal explanations.
-3. If the data does not answer a question, say so clearly.
-4. Distinguish observed patterns from possible explanations.
+1. Base statistical claims on the supplied DATA CONTEXT.
+2. Do not invent statistics, reporting years, sources, or explanations.
+3. If CURATED EXTERNAL EVIDENCE is supplied, use it to explain the
+   relevant economic question, while distinguishing it from warehouse data.
+4. If no external evidence is supplied and the warehouse cannot establish
+   a cause, explain that limitation clearly.
 5. Use clear language suitable for students, citizens, journalists, and analysts.
 6. Mention the relevant indicator, country, and year when quoting figures.
 7. Interpret each indicator according to its indicator code and unit.
@@ -679,6 +732,8 @@ DATA COVERAGE CHECK:
 
 DATA CONTEXT:
 {context}
+EXTERNAL EVIDENCE:
+{external_evidence if external_evidence else "No curated external evidence supplied."}
 
 USER QUESTION:
 {question.strip()}
@@ -924,6 +979,10 @@ greeting in every response.
                 if answer:
                     st.markdown("### EBEN's response")
                     st.markdown(answer)
+                    if external_sources:
+                        st.markdown("**Further reading and evidence:**")
+                        for title, url in external_sources:
+                            st.markdown(f"- [{title}]({url})")
 
                     if response_was_truncated:
                         st.warning(
